@@ -41,6 +41,7 @@
     "nuxt-i18n": "^6.8.0",
     "nuxt-start": "^2.12.2",
     "nuxt-svg-sprite-module": "^1.0.6",
+    "vue-moment": "^4.1.0",
     "vuefire": "^2.2.2"
   },
   "devDependencies": {

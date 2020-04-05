@@ -10,7 +10,7 @@
       div.flex.justify-between
         div.flex.justify-between.text-gray-400.text-sm.items-center
           span.flex.items-center
-            span.ml-2 04.04.2020
+            span.ml-2 {{ taskData.created_at.seconds | moment("MMMM Do YYYY, h:mm:ss a") }}
         div.flex    
           nuxt-link(tag="a" :to="localePath({name: 'edit-item', params:{item: taskData.id}})")
             svg.logo__icon.w-8.h-8
