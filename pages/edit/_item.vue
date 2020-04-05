@@ -50,6 +50,7 @@ export default {
           .set(this.task)
           .then(response => {
             console.info(response);
+            this.$router.push(this.localePath('index'));
           });
       } catch (error) {
         console.info(error);

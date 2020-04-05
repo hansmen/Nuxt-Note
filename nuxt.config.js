@@ -39,7 +39,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '@/plugins/vue-moments', mode: 'client' },],
+  plugins: [{ src: '@/plugins/vue-moments' },],
   /*
    ** Nuxt.js dev-modules
    */

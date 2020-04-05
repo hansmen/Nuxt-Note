@@ -13,7 +13,7 @@
             div
               button(type="submit" value="add" class="hover:bg-gray-800 focus:outline-none focus:shadow-outline").bg-gray-900.text-white.font-bold.py-2.px-4.rounded.w-full.uppercase.tracking-wider Add
       div.flex.justify-center.flex-col.w-full
-        h1.title.text-green-700.text-6xl.text-bold SPA Note
+        h1.title.text-green-700.text-6xl.text-bold Note
       div.flex.justify-between.shadow.rounded.bg-gray-300.p-2.mb-3  
         nuxt-link(tag="a" :to="localePath('new')").ml-3.text-gray-500.w-8.h-8
           svg.logo__icon.w-8.h-8
@@ -44,6 +44,9 @@ export default {
           newDoc.id = doc.id;
           list.push(newDoc);
         });
+      })
+      .catch(error => {
+        console.info(error);
       });
     return {
       list,

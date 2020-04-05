@@ -9,10 +9,10 @@
                 use(xlink:href="#icon-close")
             div.mb-4
               label(for="username").block.text-gray-700.text-sm.font-bold.mb-2 Author
-              input(placeholder="name" class="focus:outline-none focus:bg-white" v-model="form.name").appearance-none.bloc.w-full.bg-gray-200.text-gray-700.border.rounded.py-3.px-4.mb-3.leading-tight
+              input(placeholder="name" class="focus:outline-none focus:bg-white" v-model="form.name" required).appearance-none.bloc.w-full.bg-gray-200.text-gray-700.border.rounded.py-3.px-4.mb-3.leading-tight
             div.mb-4
               label(for="content").block.text-gray-700.text-sm.font-bold.mb-2 Content
-              input(placeholder="content" class="focus:outline-none focus:bg-white" v-model="form.content").appearance-none.block.w-full.bg-gray-200.text-gray-700.border.rounded.py-3.px-4.mb-3.leading-tight.h-32
+              input(placeholder="content" class="focus:outline-none focus:bg-white" v-model="form.content" required).appearance-none.block.w-full.bg-gray-200.text-gray-700.border.rounded.py-3.px-4.mb-3.leading-tight.h-32
             div
               button(type="submit" value="add" class="hover:bg-gray-800 focus:outline-none focus:shadow-outline").bg-gray-900.text-white.font-bold.py-2.px-4.rounded.w-full.uppercase.tracking-wider Add
 </template>
@@ -44,9 +44,10 @@ export default {
           .set(this.form)
           .then(response => {
             console.info(response);
+            this.$router.push(this.localePath('index'));
           });
       } catch (error) {
-        this.$toast.error(error);
+        console.info(error);
       }
     },
   },

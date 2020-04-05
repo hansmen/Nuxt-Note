@@ -3,11 +3,10 @@
     div.bg-white.h-full.rounded.p-2.shadow.flex.flex-col
       div.text-gray-800.font-bold.uppercase.text-sm.flex.justify-between.items-start
         span(class="w-11/12") {{ commentData.author }}
-        button.flex.justify-center.items-center.rounded-full.block.h-8.w-8.text-gray-400.bg-gray-100(class="hover:text-gray-500 hover:text-gray-200")
       div.flex-1.mt-2.text-gray-700.text-xs {{ commentData.content }}
       div.flex.justify-between.text-gray-400.text-sm.items-center
-        span.flex.items-center
-          span.ml-2 04.04.2020
+          span.flex.items-center
+            span.ml-2 {{ commentData.created_at.seconds | moment("MMMM Do YYYY, h:mm:ss a") }}
 </template>
 
 <script>

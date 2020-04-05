@@ -11,7 +11,7 @@ module.exports = {
   plugins: ['vue', 'prettier'],
   // add your custom rules here
   rules: {
-    // 'no-console ': 'warn',
+    'no-console': 'off',
     'vue/max-attributes-per-line': 'off',
   },
 };

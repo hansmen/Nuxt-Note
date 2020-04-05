@@ -9,17 +9,19 @@
                 use(xlink:href="#icon-close")
             div.mb-4
               label.block.text-gray-700.font-bold.mb-2.text-md Viewed post
-              input(placeholder="author" class="focus:outline-none focus:bg-white" v-model="task.name").appearance-none.bloc.w-full.bg-gray-200.text-gray-700.border.rounded.py-3.px-4.mb-3.leading-tight
+              span(class="focus:outline-none focus:bg-white").appearance-none.block.w-full.text-gray-700.border.rounded.py-3.px-4.mb-3.leading-tight {{ task.name }}
             div.mb-4
-              input(placeholder="content" class="focus:outline-none focus:bg-white" v-model="task.content").appearance-none.block.w-full.bg-gray-200.text-gray-700.border.rounded.py-3.px-4.mb-3.leading-tight.h-16
+              span(
+                class="focus:outline-none focus:bg-white"
+                ).appearance-none.block.w-full.text-gray-700.border.rounded.py-3.px-4.mb-3.leading-tight.h-16 {{ task.content }}
           form(@submit.prevent="save").bg-white.shadow-md.rounded.px-8.pt-6.pb-8.mb-4
             div.mb-4
               label(for="username").block.text-gray-700.text-md.font-bold.mb-2 Write your comment
               label(for="username").block.text-gray-700.text-sm.font-bold.mb-2.mt-4 Author
-              input(placeholder="author" class="focus:outline-none focus:bg-white" v-model="form.author").appearance-none.bloc.w-full.bg-gray-200.text-gray-700.border.rounded.py-3.px-4.mb-3.leading-tight
+              input(placeholder="author" class="focus:outline-none focus:bg-white" v-model="form.author" required).appearance-none.bloc.w-full.bg-gray-200.text-gray-700.border.rounded.py-3.px-4.mb-3.leading-tight
             div.mb-4
               label(for="content").block.text-gray-700.text-sm.font-bold.mb-2 Content
-              input(placeholder="content" class="focus:outline-none focus:bg-white" v-model="form.content").appearance-none.block.w-full.bg-gray-200.text-gray-700.border.rounded.py-3.px-4.mb-3.leading-tight.h-24
+              input(placeholder="content" class="focus:outline-none focus:bg-white" v-model="form.content" required).appearance-none.block.w-full.bg-gray-200.text-gray-700.border.rounded.py-3.px-4.mb-3.leading-tight.h-24
             div
               button(type="submit" value="add" class="hover:bg-gray-800 focus:outline-none focus:shadow-outline").bg-gray-900.text-white.font-bold.py-2.px-4.rounded.w-full.uppercase.tracking-wider Add
           section#todo.my-16.px-2
@@ -88,6 +90,7 @@ export default {
         console.info(error);
       }
     },
+    checkForm() {},
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template lang="pug">
-  li.task.w-full(class="sm:w-1/2 md:w-1/3 lg:w-1/4").h-64.p-2.list-none.text-left
+  li.task.w-full(class="sm:w-full md:w-1/2 lg:w-1/3").h-64.p-2.list-none.text-left
     div.bg-white.h-full.rounded.p-2.shadow.flex.flex-col
       div.text-gray-800.font-bold.uppercase.text-sm.flex.justify-between.items-start
         span(class="w-11/12") {{ taskData.name }}
@@ -10,7 +10,7 @@
       div.flex.justify-between
         div.flex.justify-between.text-gray-400.text-sm.items-center
           span.flex.items-center
-            span.ml-2 {{ taskData.created_at.seconds | moment("MMMM Do YYYY, h:mm:ss a") }}
+            span.ml-2 {{ taskData.created_at.seconds | moment("MMMM DD YYYY h:mm:ss a") }}
         div.flex    
           nuxt-link(tag="a" :to="localePath({name: 'edit-item', params:{item: taskData.id}})")
             svg.logo__icon.w-8.h-8
@@ -51,7 +51,7 @@ export default {
             console.info(response);
           });
       } catch (error) {
-        this.$toast.error(error);
+        console.info(error);
       }
     },
   },
