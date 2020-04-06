@@ -49,6 +49,7 @@ export default {
           .delete()
           .then(response => {
             console.info(response);
+            window.location.reload(true);
           });
       } catch (error) {
         console.info(error);

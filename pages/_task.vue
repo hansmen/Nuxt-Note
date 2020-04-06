@@ -18,18 +18,22 @@
             div.mb-4
               label(for="username").block.text-gray-700.text-md.font-bold.mb-2 Write your comment
               label(for="username").block.text-gray-700.text-sm.font-bold.mb-2.mt-4 Author
-              input(placeholder="author" class="focus:outline-none focus:bg-white" v-model="form.author" required).appearance-none.bloc.w-full.bg-gray-200.text-gray-700.border.rounded.py-3.px-4.mb-3.leading-tight
+              input(placeholder="author" class="focus:outline-none focus:bg-white" v-model="form.author" required @blur="isInputTouched = true"
+      :class="{ error: isInputError }").appearance-none.bloc.w-full.bg-gray-200.text-gray-700.border.rounded.py-3.px-4.mb-3.leading-tight
+              div(v-if="isInputError") Field is not filled correctly
             div.mb-4
               label(for="content").block.text-gray-700.text-sm.font-bold.mb-2 Content
               input(placeholder="content" class="focus:outline-none focus:bg-white" v-model="form.content" required).appearance-none.block.w-full.bg-gray-200.text-gray-700.border.rounded.py-3.px-4.mb-3.leading-tight.h-24
             div
-              button(type="submit" value="add" class="hover:bg-gray-800 focus:outline-none focus:shadow-outline").bg-gray-900.text-white.font-bold.py-2.px-4.rounded.w-full.uppercase.tracking-wider Add
+              button(type="submit" value="add" class="hover:bg-gray-800 focus:outline-none focus:shadow-outline" :disabled="!isInputValid").bg-gray-900.text-white.font-bold.py-2.px-4.rounded.w-full.uppercase.tracking-wider Add
           section#todo.my-16.px-2
             ul.tasks.flex.flex-wrap
               Comment(v-for="comment in comments" :key="comment.id" :commentData="comment")
 </template>
 
 <script>
+const inputCheckRegex = /^[A-ZА-ЯЁ][a-zа-яё]+ {1}[A-ZА-ЯЁ][a-zа-яё]+$/;
+
 const components = {
   Comment: () => import('@/components/common/Comment'),
 };
@@ -75,6 +79,14 @@ export default {
       },
     };
   },
+  computed: {
+    isInputValid() {
+      return inputCheckRegex.test(this.form.author);
+    },
+    isInputError() {
+      return !this.isInputValid && this.form.author;
+    },
+  },
   methods: {
     async save() {
       try {
@@ -85,12 +97,12 @@ export default {
           .set(this.form)
           .then(response => {
             console.info(response);
+            window.location.reload(true);
           });
       } catch (error) {
         console.info(error);
       }
     },
-    checkForm() {},
   },
 };
 </script>
